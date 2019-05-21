@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+<meta name="author" content="" />
+
+
+<title>daxboard.utf8</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+<script src="site_libs/htmlwidgets-1.3/htmlwidgets.js"></script>
+<link href="site_libs/bokehjs-0.12.2/bokeh.min.css" rel="stylesheet" />
+<link href="site_libs/bokehjs-0.12.2/loader.css" rel="stylesheet" />
+<script src="site_libs/bokehjs-0.12.2/bokeh.min.js"></script>
+<script src="site_libs/rbokeh-binding-0.5.0/rbokeh.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="FORMATO2.css" type="text/css" />
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">CE Events</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Quotation</a>
+</li>
+<li>
+  <a href="daxboard.html">Budget&amp;Map</a>
+</li>
+<li>
+  <a href="about.html">Credentials</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+
+</div>
+
+
+<script> 
+    $(document).ready(function() { 
+    $head = $('#header'); 
+    $head.prepend('<A href = https://www.cuttingedge-events.com><img src ="LOGO.png" width="150" vspace="50" align="right"></A>') 
+    }); 
+</script>
+<p><br /><br /><br /><br /></p>
+<div id="group-budget" class="section level2">
+<h2>Group Budget</h2>
+<table class="table table-striped table-condensed table-responsive" style="font-size: 10px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;position: sticky; top:0; background-color: #EF8319;">
+DATE
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #EF8319;">
+Owner
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #EF8319;">
+Quantity
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #EF8319;">
+Concept
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #EF8319;">
+withVAT
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #EF8319;">
+Total
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+may/10
+</td>
+<td style="text-align:left;">
+Ohla Barcelona 5*
+</td>
+<td style="text-align:left;">
+15
+</td>
+<td style="text-align:left;">
+DUIs, b.breakfast included
+</td>
+<td style="text-align:left;">
+€ 385
+</td>
+<td style="text-align:left;width: 2cm; font-weight: bold;">
+€ 5,775
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+may/10
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+15
+</td>
+<td style="text-align:left;">
+5* hotel tax
+</td>
+<td style="text-align:left;">
+€ 2.48
+</td>
+<td style="text-align:left;width: 2cm; font-weight: bold;">
+€ 37.2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+may/11
+</td>
+<td style="text-align:left;">
+Ohla Barcelona 5*
+</td>
+<td style="text-align:left;">
+15
+</td>
+<td style="text-align:left;">
+DUIs, b.breakfast included
+</td>
+<td style="text-align:left;">
+€ 385
+</td>
+<td style="text-align:left;width: 2cm; font-weight: bold;">
+€ 5,775
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+may/11
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+15
+</td>
+<td style="text-align:left;">
+5* hotel tax
+</td>
+<td style="text-align:left;">
+€ 2.48
+</td>
+<td style="text-align:left;width: 2cm; font-weight: bold;">
+€ 37.2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+may/12
+</td>
+<td style="text-align:left;">
+Ohla Barcelona 5*
+</td>
+<td style="text-align:left;">
+15
+</td>
+<td style="text-align:left;">
+DUIs, b.breakfast included
+</td>
+<td style="text-align:left;">
+€ 385
+</td>
+<td style="text-align:left;width: 2cm; font-weight: bold;">
+€ 5,775
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+may/12
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+15
+</td>
+<td style="text-align:left;">
+5* hotel tax
+</td>
+<td style="text-align:left;">
+€ 2.48
+</td>
+<td style="text-align:left;width: 2cm; font-weight: bold;">
+€ 37.2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+may/10
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+30 seaters bus transfer from Airport to Hotel
+</td>
+<td style="text-align:left;">
+€ 190
+</td>
+<td style="text-align:left;width: 2cm; font-weight: bold;">
+€ 190
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+may/10
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+30 seaters bus at disposal for dinner (4h)
+</td>
+<td style="text-align:left;">
+€ 385
+</td>
+<td style="text-align:left;width: 2cm; font-weight: bold;">
+€ 385
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+may/10
+</td>
+<td style="text-align:left;">
+Restaurant L’Olivé
+</td>
+<td style="text-align:left;">
+15
+</td>
+<td style="text-align:left;">
+starters to share, main course, dessert, red and white wine, water and coffees, from
+</td>
+<td style="text-align:left;">
+€ 75
+</td>
+<td style="text-align:left;width: 2cm; font-weight: bold;">
+€ 1,125
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+may/10
+</td>
+<td style="text-align:left;">
+Alternative: Restaurant Windsor
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+starters to share, main course, dessert, red and white wine, water and coffees, from
+</td>
+<td style="text-align:left;">
+€ 74
+</td>
+<td style="text-align:left;width: 2cm; font-weight: bold;">
+€ 0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+may/11
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+30 seaters bus at disposal for the F1 (8h)
+</td>
+<td style="text-align:left;">
+€ 630
+</td>
+<td style="text-align:left;width: 2cm; font-weight: bold;">
+€ 630
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+may/11
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+Bus parking
+</td>
+<td style="text-align:left;">
+€ 80
+</td>
+<td style="text-align:left;width: 2cm; font-weight: bold;">
+€ 80
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+may/11
+</td>
+<td style="text-align:left;">
+Circuit de Catalunya
+</td>
+<td style="text-align:left;">
+15
+</td>
+<td style="text-align:left;">
+Super Fan -tribunes A, L B, E (Valid for 3 days) rates per person
+</td>
+<td style="text-align:left;">
+€ 380
+</td>
+<td style="text-align:left;width: 2cm; font-weight: bold;">
+€ 5,700
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Circuit de Catalunya
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Excellence -tribunes I, H, G F(Valid for 3 days) rates per person
+</td>
+<td style="text-align:left;">
+€ 490
+</td>
+<td style="text-align:left;width: 2cm; font-weight: bold;">
+€ 0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Circuit de Catalunya
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Suite Platinum: Box in exclusive, up to 25 pax, seats in the Main Tribune, 2 passes for staff, Pit Lane Tour, TV screens, Catering, customized badges- rates for the whole group -
+</td>
+<td style="text-align:left;">
+€ 3.7e+04
+</td>
+<td style="text-align:left;width: 2cm; font-weight: bold;">
+€ 0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Circuit de Catalunya
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Pedralbes Club: Shared space located in the first floor of the Main Tribune, including Pit Lane Tour, catering and customized badges. - rates per pax -
+</td>
+<td style="text-align:left;">
+€ 1,700
+</td>
+<td style="text-align:left;width: 2cm; font-weight: bold;">
+€ 0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Circuit de Catalunya
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Village GP: Shared space located at Tribune 1 (covered), service of catering included and customized badges - rates per pax -
+</td>
+<td style="text-align:left;">
+€ 950
+</td>
+<td style="text-align:left;width: 2cm; font-weight: bold;">
+€ 0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+may/11
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+30 seaters bus at disposal for dinner (4h)
+</td>
+<td style="text-align:left;">
+€ 290
+</td>
+<td style="text-align:left;width: 2cm; font-weight: bold;">
+€ 290
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+may/11
+</td>
+<td style="text-align:left;">
+Restaurant Boca Grande
+</td>
+<td style="text-align:left;">
+15
+</td>
+<td style="text-align:left;">
+tasting menu (all to share), including red and white wine, cava, water and coffees, from
+</td>
+<td style="text-align:left;">
+€ 133.5
+</td>
+<td style="text-align:left;width: 2cm; font-weight: bold;">
+€ 2,002
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+may/11
+</td>
+<td style="text-align:left;">
+Alternative: Restaurant Monvinic
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+3 courses menu, red and white wine, water and coffees, from
+</td>
+<td style="text-align:left;">
+€ 76.5
+</td>
+<td style="text-align:left;width: 2cm; font-weight: bold;">
+€ 0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+may/12
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+30 seaters bus at disposal for the F1 (8h)
+</td>
+<td style="text-align:left;">
+€ 630
+</td>
+<td style="text-align:left;width: 2cm; font-weight: bold;">
+€ 630
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+may/12
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+Bus parking
+</td>
+<td style="text-align:left;">
+€ 80
+</td>
+<td style="text-align:left;width: 2cm; font-weight: bold;">
+€ 80
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+may/12
+</td>
+<td style="text-align:left;">
+Circuit de Catalunya
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+F1
+</td>
+<td style="text-align:left;">
+€ NA
+</td>
+<td style="text-align:left;width: 2cm; font-weight: bold;">
+€ NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+may/12
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+30 seaters bus at disposal for dinner (4h)
+</td>
+<td style="text-align:left;">
+€ 290
+</td>
+<td style="text-align:left;width: 2cm; font-weight: bold;">
+€ 290
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+may/12
+</td>
+<td style="text-align:left;">
+Restaurant Torre d’Alta Mar
+</td>
+<td style="text-align:left;">
+15
+</td>
+<td style="text-align:left;">
+starters to share, main course, dessert, red and white wine, cava, water and coffees, from
+</td>
+<td style="text-align:left;">
+€ 145
+</td>
+<td style="text-align:left;width: 2cm; font-weight: bold;">
+€ 2,175
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+may/12
+</td>
+<td style="text-align:left;">
+Alternative: Restaurant Pez Vela
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+starters to share, main course , dessert, red and white wine, water and coffees, from
+</td>
+<td style="text-align:left;">
+€ 70
+</td>
+<td style="text-align:left;width: 2cm; font-weight: bold;">
+€ 0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+may/13
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+30 seater bus at disposal for lunch and go to Airport.
+</td>
+<td style="text-align:left;">
+€ 190
+</td>
+<td style="text-align:left;width: 2cm; font-weight: bold;">
+€ 190
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+may/13
+</td>
+<td style="text-align:left;">
+El Nacional (Tapería)
+</td>
+<td style="text-align:left;">
+15
+</td>
+<td style="text-align:left;">
+tapas menu, drinks and coffee inc.
+</td>
+<td style="text-align:left;">
+€ 74
+</td>
+<td style="text-align:left;width: 2cm; font-weight: bold;">
+€ 1,110
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Alternative: H10 Metropolitan 4*
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+DUIs, b.breakfast included (rates per room and night)
+</td>
+<td style="text-align:left;">
+€ 272
+</td>
+<td style="text-align:left;width: 2cm; font-weight: bold;">
+€ 0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Alternative: 1898 Hotel 4* SUP
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+DUIs, b.breakfast included (rates per room and night)
+</td>
+<td style="text-align:left;">
+€ 453
+</td>
+<td style="text-align:left;width: 2cm; font-weight: bold;">
+€ 0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Alternative: OD Barcelona 5*
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+DUIs, b.breakfast included (rates per room and night)
+</td>
+<td style="text-align:left;">
+€ 225
+</td>
+<td style="text-align:left;width: 2cm; font-weight: bold;">
+€ 0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Alternative: Le Meridien 5*
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+DUIs, b.breakfast included (rates per room and night)
+</td>
+<td style="text-align:left;">
+€ 382
+</td>
+<td style="text-align:left;width: 2cm; font-weight: bold;">
+€ 0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+5* hotel tax
+</td>
+<td style="text-align:left;">
+€ 2.48
+</td>
+<td style="text-align:left;width: 2cm; font-weight: bold;">
+€ 0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+4* hotel tax
+</td>
+<td style="text-align:left;">
+€ 1.21
+</td>
+<td style="text-align:left;width: 2cm; font-weight: bold;">
+€ 0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;color: black !important;background-color: #EF8319 !important;">
+</td>
+<td style="text-align:left;font-weight: bold;color: black !important;background-color: #EF8319 !important;">
+</td>
+<td style="text-align:left;font-weight: bold;color: black !important;background-color: #EF8319 !important;">
+</td>
+<td style="text-align:left;font-weight: bold;color: black !important;background-color: #EF8319 !important;">
+</td>
+<td style="text-align:left;font-weight: bold;color: black !important;background-color: #EF8319 !important;">
+€ NA
+</td>
+<td style="text-align:left;width: 2cm; font-weight: bold;font-weight: bold;color: black !important;background-color: #EF8319 !important;">
+€ 3.231e+04
+</td>
+</tr>
+</tbody>
+</table>
+<p><br /><br /></p>
+</div>
+<div id="map" class="section level2">
+<h2>Map</h2>
+<p><br /><br /><br /><br /><br /><br /></p>
+<div id="htmlwidget-caac1fecaf0bdd648593" style="width:480px;height:480px;" class="rbokeh html-widget"></div>
+<script type="application/json" data-for="htmlwidget-caac1fecaf0bdd648593">{"x":{"elementid":"3541350694e050ec017ce99cc949de0c","modeltype":"GMapPlot","modelid":"bcf920626eb9dd46ea36e753197b94d6","docid":"686293fe4b82f35981a5fd476266ad8d","docs_json":{"686293fe4b82f35981a5fd476266ad8d":{"version":"0.12.2","title":"Bokeh Figure","roots":{"root_ids":["bcf920626eb9dd46ea36e753197b94d6"],"references":[{"type":"GMapPlot","id":"bcf920626eb9dd46ea36e753197b94d6","attributes":{"id":"bcf920626eb9dd46ea36e753197b94d6","plot_width":480,"plot_height":480,"sizing_mode":"scale_both","x_range":{"type":"Range1d","id":"ac109237ac4c552f9f7bec8b64505a15"},"y_range":{"type":"Range1d","id":"67ccfe13f9cda63fee4b969fc75fd461"},"left":[{"type":"LinearAxis","id":"3feeaec0e98495af75c6af529c26b631"}],"below":[{"type":"LinearAxis","id":"d3cf9251382c2f129ecfda57f8887a8a"}],"right":[],"above":[],"renderers":[{"type":"GlyphRenderer","id":"a44eb4953ed52ff192feb5aee43f18dd"},{"type":"GlyphRenderer","id":"313b1422fe8f08ff74e73c214734896f"},{"type":"GlyphRenderer","id":"f4016def509c3ac0c1f4967a13cfde74"},{"type":"Legend","id":"e4b8c6c86d48ac9a1da8f219aef8736d"},{"type":"LinearAxis","id":"d3cf9251382c2f129ecfda57f8887a8a"},{"type":"LinearAxis","id":"3feeaec0e98495af75c6af529c26b631"}],"extra_y_ranges":{},"extra_x_ranges":{},"tags":[],"min_border_left":4,"min_border_right":4,"min_border_top":4,"min_border_bottom":4,"lod_threshold":null,"toolbar":{"type":"Toolbar","id":"2039beb07b5c7e0a36a19893ac42d509"},"tool_events":{"type":"ToolEvents","id":"d8c5e22c48818255d84316c6a914b183"},"title":{"type":"Title","id":"436a9f12056562c8b096aa0a379aa997"},"api_key":"AIzaSyDaT2Nf0wgJDoAuKQV3PR07f5BEHi4qxjU","map_options":{"lat":41.3858148,"lng":2.1692236,"zoom":14,"styles":"[{\"featureType\": \"all\",\"elementType\": \"all\",\"stylers\": [{\"saturation\": \"32\"},{\"lightness\": \"-3\"},{\"visibility\": \"on\"},{\"weight\": \"1.18\"}]},{\"featureType\": \"administrative\",\"elementType\": \"labels\",\"stylers\": [{\"visibility\": \"off\"}]},{\"featureType\": \"landscape\",\"elementType\": \"labels\",\"stylers\": [{\"visibility\": \"off\"}]},{\"featureType\": \"landscape.man_made\",\"elementType\": \"all\",\"stylers\": [{\"saturation\": \"-70\"},{\"lightness\": \"14\"}]},{\"featureType\": \"poi\",\"elementType\": \"labels\",\"stylers\": [\n{\"visibility\": \"off\"}]},{\"featureType\": \"road\",\"elementType\": \"labels\",\"stylers\": [\n{\"visibility\": \"off\"}]},{\"featureType\": \"transit\",\"elementType\": \"labels\",\n\"stylers\": [{\"visibility\": \"off\"}]},{\"featureType\": \"water\",\"elementType\": \"all\",\n\"stylers\": [{\"saturation\": \"100\"},{\"lightness\": \"-14\"}]},{\"featureType\": \"water\",\n\"elementType\": \"labels\",\"stylers\": [{\"visibility\": \"off\"},{\"lightness\": \"12\"}]}]"}}},{"type":"Toolbar","id":"2039beb07b5c7e0a36a19893ac42d509","attributes":{"id":"2039beb07b5c7e0a36a19893ac42d509","tags":[],"active_drag":"auto","active_scroll":"auto","active_tap":"auto","tools":[{"type":"PanTool","id":"36dfae01a3ae0d7993aeb889f7620c77"},{"type":"WheelZoomTool","id":"c18a52c0f8f1f10942c388dff1927223"},{"type":"SaveTool","id":"14eeefc1b922b1f683d84a21813154fb"},{"type":"HoverTool","id":"e9100d37a785314d935e2f3b81356f86"}],"logo":null}},{"type":"PanTool","id":"36dfae01a3ae0d7993aeb889f7620c77","attributes":{"id":"36dfae01a3ae0d7993aeb889f7620c77","tags":[],"plot":{"type":"GMapPlot","id":"bcf920626eb9dd46ea36e753197b94d6"},"dimensions":["width","height"]}},{"type":"ToolEvents","id":"d8c5e22c48818255d84316c6a914b183","attributes":{"id":"d8c5e22c48818255d84316c6a914b183","tags":[]},"geometries":[]},{"type":"WheelZoomTool","id":"c18a52c0f8f1f10942c388dff1927223","attributes":{"id":"c18a52c0f8f1f10942c388dff1927223","tags":[],"plot":{"type":"GMapPlot","id":"bcf920626eb9dd46ea36e753197b94d6"},"dimensions":["width","height"]}},{"type":"SaveTool","id":"14eeefc1b922b1f683d84a21813154fb","attributes":{"id":"14eeefc1b922b1f683d84a21813154fb","tags":[],"plot":{"type":"GMapPlot","id":"bcf920626eb9dd46ea36e753197b94d6"}}},{"type":"Title","id":"436a9f12056562c8b096aa0a379aa997","attributes":{"id":"436a9f12056562c8b096aa0a379aa997","tags":[],"plot":null,"text":"Hotels and venues mentioned in the Quotation"}},{"type":"HoverTool","id":"e9100d37a785314d935e2f3b81356f86","attributes":{"id":"e9100d37a785314d935e2f3b81356f86","tags":[],"plot":{"type":"GMapPlot","id":"bcf920626eb9dd46ea36e753197b94d6"},"renderers":[{"type":"GlyphRenderer","id":"a44eb4953ed52ff192feb5aee43f18dd"}],"names":[],"anchor":"center","attachment":"horizontal","line_policy":"prev","mode":"mouse","point_policy":"snap_to_data","tooltips":[["Location","@hover_col_1"],["Address","@hover_col_2"]]}},{"type":"ColumnDataSource","id":"ca0c424f48651f4112039e63bc72d3f1","attributes":{"id":"ca0c424f48651f4112039e63bc72d3f1","tags":[],"column_names":["x","y","fill_color","hover_col_1","hover_col_2"],"selected":[],"data":{"x":[2.174348,2.167697,2.171104,2.167628,2.17047,2.162683,2.157087,2.159855,2.164991,2.190044,2.18774,2.16396],"y":[41.386967,41.387772,41.383467,41.393802,41.383605,41.389096,41.394685,41.394514,41.388973,41.369104,41.372663,41.39317],"fill_color":["#1F77B4","#1F77B4","#1F77B4","#1F77B4","#1F77B4","#FF7F0E","#FF7F0E","#FF7F0E","#FF7F0E","#FF7F0E","#FF7F0E","#FF7F0E"],"hover_col_1":["Ohla Barcelona  ","H10 Metropolitan","1898 Hotel      ","OD Barcelona    ","Le Meridien     ","L’olivé         ","Windsor         ","Boca Grande     ","Monvinic        ","Pez Vela        ","Torre d’Alta Mar","El Nacional     "],"hover_col_2":["NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA"]}}},{"type":"Circle","id":"7263cbd920cb8b060df4aa9a0a880c00","attributes":{"id":"7263cbd920cb8b060df4aa9a0a880c00","tags":[],"size":{"units":"screen","value":10},"visible":true,"line_color":null,"line_alpha":{"units":"data","value":7},"fill_alpha":{"units":"data","value":3.5},"x":{"units":"data","field":"x"},"y":{"units":"data","field":"y"},"fill_color":{"units":"data","field":"fill_color"}}},{"type":"Circle","id":"33411d4cdf3bcbba275e70f638cd3459","attributes":{"id":"33411d4cdf3bcbba275e70f638cd3459","tags":[],"size":{"units":"screen","value":10},"visible":true,"line_color":null,"line_alpha":{"units":"data","value":7},"fill_alpha":{"units":"data","value":3.5},"x":{"units":"data","field":"x"},"y":{"units":"data","field":"y"},"fill_color":{"units":"data","value":"#e1e1e1"}}},{"type":"Circle","id":"797ff0afa6119f3a3ceca639b2ac0894","attributes":{"id":"797ff0afa6119f3a3ceca639b2ac0894","tags":[],"size":{"units":"screen","value":10},"visible":true,"line_color":null,"line_alpha":{"units":"data","value":1},"fill_alpha":{"units":"data","value":1},"x":{"units":"data","field":"x"},"y":{"units":"data","field":"y"},"fill_color":{"units":"data","field":"fill_color"}}},{"type":"GlyphRenderer","id":"a44eb4953ed52ff192feb5aee43f18dd","attributes":{"id":"a44eb4953ed52ff192feb5aee43f18dd","tags":[],"selection_glyph":null,"nonselection_glyph":{"type":"Circle","id":"33411d4cdf3bcbba275e70f638cd3459"},"hover_glyph":{"type":"Circle","id":"797ff0afa6119f3a3ceca639b2ac0894"},"name":null,"data_source":{"type":"ColumnDataSource","id":"ca0c424f48651f4112039e63bc72d3f1"},"glyph":{"type":"Circle","id":"7263cbd920cb8b060df4aa9a0a880c00"}}},{"type":"ColumnDataSource","id":"a0a802f171a0a2c6825c6319ae599466","attributes":{"id":"a0a802f171a0a2c6825c6319ae599466","tags":[],"column_names":["x","y"],"selected":[],"data":{"x":[null,null],"y":[null,null]}}},{"type":"Circle","id":"5e7df7669be1a83adb97153666928db5","attributes":{"id":"5e7df7669be1a83adb97153666928db5","tags":[],"size":{"units":"screen","value":0},"visible":true,"line_color":null,"line_alpha":{"units":"data","value":7},"fill_alpha":{"units":"data","value":3.5},"fill_color":{"units":"data","value":"#1F77B4"},"x":{"units":"data","field":"x"},"y":{"units":"data","field":"y"}}},{"type":"Circle","id":"d35ec7618ecfaadd4a4bd101d0b3b0cf","attributes":{"id":"d35ec7618ecfaadd4a4bd101d0b3b0cf","tags":[],"size":{"units":"screen","value":0},"visible":true,"line_color":null,"line_alpha":{"units":"data","value":7},"fill_alpha":{"units":"data","value":3.5},"fill_color":{"units":"data","value":"#e1e1e1"},"x":{"units":"data","field":"x"},"y":{"units":"data","field":"y"}}},{"type":"Circle","id":"56546164289b67ca3a15e43abdb57cc7","attributes":{"id":"56546164289b67ca3a15e43abdb57cc7","tags":[],"size":{"units":"screen","value":0},"visible":true,"line_color":null,"line_alpha":{"units":"data","value":1},"fill_alpha":{"units":"data","value":1},"fill_color":{"units":"data","value":"#1F77B4"},"x":{"units":"data","field":"x"},"y":{"units":"data","field":"y"}}},{"type":"GlyphRenderer","id":"313b1422fe8f08ff74e73c214734896f","attributes":{"id":"313b1422fe8f08ff74e73c214734896f","tags":[],"selection_glyph":null,"nonselection_glyph":{"type":"Circle","id":"d35ec7618ecfaadd4a4bd101d0b3b0cf"},"hover_glyph":{"type":"Circle","id":"56546164289b67ca3a15e43abdb57cc7"},"name":null,"data_source":{"type":"ColumnDataSource","id":"a0a802f171a0a2c6825c6319ae599466"},"glyph":{"type":"Circle","id":"5e7df7669be1a83adb97153666928db5"}}},{"type":"Circle","id":"8e37f893752d605f9e822aeb0d6ece51","attributes":{"id":"8e37f893752d605f9e822aeb0d6ece51","tags":[],"size":{"units":"screen","value":0},"visible":true,"line_color":null,"line_alpha":{"units":"data","value":7},"fill_alpha":{"units":"data","value":3.5},"fill_color":{"units":"data","value":"#FF7F0E"},"x":{"units":"data","field":"x"},"y":{"units":"data","field":"y"}}},{"type":"Circle","id":"66b2396e93e14f054c3d2b16bd0dbb18","attributes":{"id":"66b2396e93e14f054c3d2b16bd0dbb18","tags":[],"size":{"units":"screen","value":0},"visible":true,"line_color":null,"line_alpha":{"units":"data","value":7},"fill_alpha":{"units":"data","value":3.5},"fill_color":{"units":"data","value":"#e1e1e1"},"x":{"units":"data","field":"x"},"y":{"units":"data","field":"y"}}},{"type":"Circle","id":"237942c26a8000a60ca2bf2751365b21","attributes":{"id":"237942c26a8000a60ca2bf2751365b21","tags":[],"size":{"units":"screen","value":0},"visible":true,"line_color":null,"line_alpha":{"units":"data","value":1},"fill_alpha":{"units":"data","value":1},"fill_color":{"units":"data","value":"#FF7F0E"},"x":{"units":"data","field":"x"},"y":{"units":"data","field":"y"}}},{"type":"GlyphRenderer","id":"f4016def509c3ac0c1f4967a13cfde74","attributes":{"id":"f4016def509c3ac0c1f4967a13cfde74","tags":[],"selection_glyph":null,"nonselection_glyph":{"type":"Circle","id":"66b2396e93e14f054c3d2b16bd0dbb18"},"hover_glyph":{"type":"Circle","id":"237942c26a8000a60ca2bf2751365b21"},"name":null,"data_source":{"type":"ColumnDataSource","id":"a0a802f171a0a2c6825c6319ae599466"},"glyph":{"type":"Circle","id":"8e37f893752d605f9e822aeb0d6ece51"}}},{"type":"Legend","id":"e4b8c6c86d48ac9a1da8f219aef8736d","attributes":{"id":"e4b8c6c86d48ac9a1da8f219aef8736d","tags":[],"plot":{"type":"GMapPlot","id":"bcf920626eb9dd46ea36e753197b94d6"},"legends":[["Category",[]],[" Accom",[{"type":"GlyphRenderer","id":"313b1422fe8f08ff74e73c214734896f"}]],[" Rest",[{"type":"GlyphRenderer","id":"f4016def509c3ac0c1f4967a13cfde74"}]]],"location":"top_right"}},{"type":"Range1d","id":"ac109237ac4c552f9f7bec8b64505a15","attributes":{"id":"ac109237ac4c552f9f7bec8b64505a15","tags":[],"start":-0.588923946,"end":44.131825746}},{"type":"Range1d","id":"67ccfe13f9cda63fee4b969fc75fd461","attributes":{"id":"67ccfe13f9cda63fee4b969fc75fd461","tags":[],"start":-0.576558698,"end":44.140467298}},{"type":"LinearAxis","id":"d3cf9251382c2f129ecfda57f8887a8a","attributes":{"id":"d3cf9251382c2f129ecfda57f8887a8a","tags":[],"plot":{"type":"GMapPlot","id":"bcf920626eb9dd46ea36e753197b94d6"},"axis_label":"","formatter":{"type":"BasicTickFormatter","id":"b8d8094f01ea8b98886b32c0fadae8f3"},"ticker":{"type":"BasicTicker","id":"928df439e86fbd02bbfc138d72a8cc8f"},"visible":false}},{"type":"BasicTickFormatter","id":"b8d8094f01ea8b98886b32c0fadae8f3","attributes":{"id":"b8d8094f01ea8b98886b32c0fadae8f3","tags":[]}},{"type":"BasicTicker","id":"928df439e86fbd02bbfc138d72a8cc8f","attributes":{"id":"928df439e86fbd02bbfc138d72a8cc8f","tags":[],"num_minor_ticks":5}},{"type":"LinearAxis","id":"3feeaec0e98495af75c6af529c26b631","attributes":{"id":"3feeaec0e98495af75c6af529c26b631","tags":[],"plot":{"type":"GMapPlot","id":"bcf920626eb9dd46ea36e753197b94d6"},"axis_label":"","formatter":{"type":"BasicTickFormatter","id":"b55fd84cb0d2d8bb8ef4ec9ceb12e793"},"ticker":{"type":"BasicTicker","id":"c83e232c4be3470008b2e31714c144b4"},"visible":false}},{"type":"BasicTickFormatter","id":"b55fd84cb0d2d8bb8ef4ec9ceb12e793","attributes":{"id":"b55fd84cb0d2d8bb8ef4ec9ceb12e793","tags":[]}},{"type":"BasicTicker","id":"c83e232c4be3470008b2e31714c144b4","attributes":{"id":"c83e232c4be3470008b2e31714c144b4","tags":[],"num_minor_ticks":5}}]}}},"debug":false},"evals":[],"jsHooks":[]}</script>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
